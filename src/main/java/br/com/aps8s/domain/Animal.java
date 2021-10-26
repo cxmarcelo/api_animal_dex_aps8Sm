@@ -24,6 +24,7 @@ public class Animal implements Serializable {
 	private String weight;
 	private String height;
 	private Integer imageId;
+	private String type;
 	
 	public Integer getId() {
 		return id;
@@ -90,6 +91,12 @@ public class Animal implements Serializable {
 	}
 	public void setHeight(String height) {
 		this.height = height;
+	}
+	public String getType() {
+		return type;
+	}
+	public void setType(String type) {
+		this.type = type;
 	}
 	@Override
 	public int hashCode() {
