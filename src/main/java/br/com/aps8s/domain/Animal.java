@@ -1,11 +1,13 @@
 package br.com.aps8s.domain;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 
 @Entity
 public class Animal implements Serializable {
@@ -25,6 +27,9 @@ public class Animal implements Serializable {
 	private String height;
 	private Integer imageId;
 	private String type;
+	
+	@ManyToMany(mappedBy = "favoriteAnimals")
+	private List<User> users;
 	
 	public Integer getId() {
 		return id;
@@ -98,6 +103,13 @@ public class Animal implements Serializable {
 	public void setType(String type) {
 		this.type = type;
 	}
+	public List<User> getUsers() {
+		return users;
+	}
+	public void setUsers(List<User> users) {
+		this.users = users;
+	}
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;
