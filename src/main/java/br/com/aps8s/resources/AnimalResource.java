@@ -42,6 +42,24 @@ public class AnimalResource {
 		List<Animal> list = service.findAll();
 		return ResponseEntity.ok().body(list);
 	}
+	
+	@RequestMapping(value = "/favorites/{id}", method = RequestMethod.GET)
+	public ResponseEntity<List<Animal>> findAllFavoritesByUserId(@PathVariable Integer id) {
+		List<Animal> list = service.findAllFavoritesByUser(id);
+		return ResponseEntity.ok().body(list);
+	}
+	
+	@RequestMapping(value = "/deleteByUser/{userId}/{animalId}", method = RequestMethod.DELETE)
+	public ResponseEntity<Void> deleteByUserIdAndAnimalId(@PathVariable(value = "userId") Integer userId, @PathVariable(value = "animalId") Integer animalId) {
+		service.deleteAnimalByUserId(userId, animalId);
+		return ResponseEntity.ok().build();
+	}
+	
+	@RequestMapping(value = "/addAnimalFavorite/{userId}/{animalId}", method = RequestMethod.PUT)
+	public ResponseEntity<Void> addByUserIdAndAnimalId(@PathVariable(value = "userId") Integer userId, @PathVariable(value = "animalId") Integer animalId) {
+		service.addAnimalFavorite(userId, animalId);
+		return ResponseEntity.ok().build();
+	}
 
 	@RequestMapping(method = RequestMethod.POST)
 	public ResponseEntity<Void> insert(@Validated @RequestBody Animal obj) {

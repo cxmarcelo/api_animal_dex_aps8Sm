@@ -9,6 +9,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 public class Animal implements Serializable {
 	private static final long serialVersionUID = 1L;
@@ -103,6 +105,8 @@ public class Animal implements Serializable {
 	public void setType(String type) {
 		this.type = type;
 	}
+	
+	@JsonIgnore
 	public List<User> getUsers() {
 		return users;
 	}
